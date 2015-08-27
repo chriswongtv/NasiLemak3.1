@@ -153,6 +153,34 @@ $(function() {
         hideHover: 'auto',
         resize: true
     });
+	
+	// Bar Chart
+ 	Morris.Bar({
+        element: 'morris-bar-chart-2',
+        data: [{
+            device: 'FreshFood-FruitsandVeggies',
+            geekbench: 421
+        }, {
+            device: 'Electronics-Smartphones',
+            geekbench: 213
+        }, {
+            device: 'Sports-Football',
+            geekbench: 112
+        }, {
+            device: 'Lifestyle-BeautyProducts',
+            geekbench: 102
+        }, {
+            device: 'FreshFood-MeatandPoultry',
+            geekbench: 87
+        }],
+        xkey: 'device',
+        ykeys: ['geekbench'],
+        labels: ['signals received'],
+        barRatio: 0.4,
+        xLabelAngle: 35,
+        hideHover: 'auto',
+        resize: true
+    });
 
 
 });
