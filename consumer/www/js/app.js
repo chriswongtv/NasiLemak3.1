@@ -58,8 +58,18 @@ angular.module('starter', ['ionic', 'starter.controllers'])
         }
       }
     })
-    .state('app.points', {
+  .state('app.points', {
       url: '/points',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/points.html',
+          controller: 'PlaylistsCtrl'
+        }
+      }
+    })
+
+  .state('app.invite', {
+      url: '/invite',
       views: {
         'menuContent': {
           templateUrl: 'templates/points.html',

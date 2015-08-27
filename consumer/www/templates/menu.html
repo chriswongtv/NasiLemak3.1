@@ -13,15 +13,17 @@
   </ion-side-menu-content>
 
   <ion-side-menu side="left">
-    <!--<ion-header-bar class="bar-stable">
-      <h1 class="title"></h1>
-    </ion-header-bar>-->
-    <ion-content>
+    <ion-content scroll="false">
         <div class="col col-33 col-offset-33"><img class="profile-picture" src="img/chris.png"></div>
         <div class="name">Chris</div>
 
         <div class="menu-wrapper">
-          <a href="#/app/points">
+          <a menu-close href="#/app/store">
+          <button class="button button-outline button-light menu-btn">
+            Home
+          </button></a><br>
+
+          <a menu-close href="#/app/rewards">
           <button class="button button-outline button-light menu-btn">
             Rewards
           </button></a><br>
@@ -38,15 +40,6 @@
       <div class="logo-footer">
         <img src="img/isetia_white.png">
       </div>
-      
-      <!--<ion-list>
-        <ion-item menu-close href="#/app/points">
-          My Points
-        </ion-item>
-        <ion-item menu-close href="#/app/rewards">
-          Rewards
-        </ion-item>
-      </ion-list>-->
     </ion-content>
   </ion-side-menu>
 </ion-side-menus>

@@ -50,11 +50,29 @@
 			<img src="img/nasiayam.jpg">
 		</div>
 
-		<div class="item item-icon-left assertive" ng-controller='MainCtrl' ng-click="openModal()">
+		<div class="item item-icon-left assertive">
 			<i class="icon ion-bag"></i>
 			Redeem
 		</div>
-
 	</div>
   </ion-content>
 </ion-view>
+
+<script>
+angular.module('ionic.example', ['ionic'])
+.controller('PopupCtrl', function($scope, $timeout, $q, $ionicPopup) {
+	$scope.showConfirm = function() {
+	   var confirmPopup = $ionicPopup.confirm({
+	     title: 'Consume Ice Cream',
+	     template: 'Are you sure you want to eat this ice cream?'
+	   });
+	   confirmPopup.then(function(res) {
+	     if(res) {
+	       console.log('You are sure');
+	     } else {
+	       console.log('You are not sure');
+	     }
+	   });
+	 };
+});
+ </script>

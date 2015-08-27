@@ -1,12 +1,12 @@
 <ion-view view-title="Trader's Bell">
-  <ion-content>
+  <ion-content scroll="false">
     <div class="welcome">Welcome to</div>
     <div class="merchant-name">Trader's Bell</div>
     <div class="unique-reward">Your unique reward today is</div>
     <div class="reward-name">20% off</div>
     <div class="fine-print">when purchasing over RM30</div>
     <div class="leaderboard">
-    	<div class="leaderboard-title"><a class="leaderboard-title" href="#/app/find">Leaderboard</a></div>
+    	<div class="leaderboard-title">Leaderboard</div>
 		<div class="list card">
 			<div class="item item-avatar">
 			    <img src="img/nanfeng.png">
@@ -18,17 +18,111 @@
 			    <h2><strong>2.</strong> Jeffrey Kwan</h2>
 			    <p>503 Points</p>
 			</div>
-			<div class="item item-avatar">
-			    <img src="img/john.png">
-			    <h2><strong>3.</strong> John Doe</h2>
-			    <p>441 Points</p>
-			</div>
+			<a menu-close href="#/app/find" style="text-decoration: none">
+				<div class="item item-avatar">
+				    <img src="img/john.png">
+				    <h2><strong>3.</strong> John Doe</h2>
+				    <p>441 Points</p>
+				</div>
+			</a>
 			<div class="item item-avatar">
 			    <img src="img/chris.png">
 			    <h2><strong>35.</strong> Chris Wong</h2>
 			    <p>234 Points</p>
 			</div>
 		</div>
+		<div class="invite-wrapper">
+			<button class="button button-outline button-light invite-btn" ng-controller="AppCtrl" ng-click="modal.show()">
+            Invite
+         	</button>
+         </div>
     </div>
   </ion-content>
 </ion-view>
+
+<script id="store.html" type="text/ng-template">
+      <ion-modal-view ng-controller="ModalCtrl">
+        <ion-header-bar>
+          <h1 class="title">Invite</h1>
+          <button class="button button-positive" ng-click="hideModal()">Close</button>
+        </ion-header-bar>
+        <ion-content>
+          <div class="padding">
+            <div class="list">
+              <label class="item item-input">
+                <span class="input-label">Name</span>
+                <input type="text" placeholder="">
+              </label>
+              <label class="item item-input">
+                <span class="input-label">Email</span>
+                <input type="text" placeholder="">
+              </label>
+              <button class="button button-block button-positive" ng-click="hideModal()">Hide Modal</button>
+              <button class="button button-block button-positive" ng-click="removeModal()">Remove Modal</button>
+              <button class="button button-block button-positive" ng-click="openActionSheet()">ActionSheet</button>
+              <button class="button button-block button-positive" ng-click="openPopup()">Popup</button>
+            </div>
+          </div>
+        </ion-content>
+      </ion-modal-view>
+    </script>
+
+    <script>
+      angular.module('modalTest', ['ionic'])
+      .controller('AppCtrl', function($scope, $ionicModal) {
+        $scope.openModal = function() {
+          $scope.modal.show();
+        };
+        $ionicModal.fromTemplateUrl('modal.html', function(modal) {
+          $scope.modal = modal;
+        }, {
+          animation: 'slide-in-up',
+          focusFirstInput: true
+        });
+      })
+      .controller('ModalCtrl', function($scope, $ionicActionSheet, $ionicPopup) {
+        $scope.hideModal = function() {
+          $scope.modal.hide();
+        };
+        $scope.removeModal = function() {
+          $scope.modal.remove();
+        };
+        $scope.openActionSheet = function() {
+          $ionicActionSheet.show({
+            // The various non-destructive button choices
+            buttons: [
+              { text: 'Share' },
+              { text: 'Move' },
+            ],
+            // The text of the red destructive button
+            destructiveText: 'Delete',
+            // The title text at the top
+            titleText: 'Modify your album',
+            // The text of the cancel button
+            cancelText: 'Cancel',
+            // Called when the sheet is cancelled, either from triggering the
+            // cancel button, or tapping the backdrop, or using escape on the keyboard
+            cancel: function() {
+            },
+            // Called when one of the non-destructive buttons is clicked, with
+            // the index of the button that was clicked. Return
+            // "true" to tell the action sheet to close. Return false to not close.
+            buttonClicked: function(index) {
+              return true;
+            },
+            // Called when the destructive button is clicked. Return true to close the
+            // action sheet. False to keep it open
+            destructiveButtonClicked: function() {
+              return true;
+            }
+          });
+        };
+        $scope.openPopup = function() {
+          $ionicPopup.alert({
+           title: 'Hey!',
+           content: 'Don\'t do that!'
+          }).then(function(res) {});
+        };
+      });
+      domTrace.observe();
+    </script>
