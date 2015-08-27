@@ -1,54 +1,82 @@
 angular.module('starter.controllers', [])
 
-.controller('DashCtrl', function($scope) {})
+.controller('AppCtrl', function($scope, $ionicModal, $timeout) {
 
-.controller('DashCtrl', function($scope, $rootScope, $ionicUser, $ionicPush) {
-  
-  // Identifies a user with the Ionic User service
-  $scope.identifyUser = function() {
-    // Your identify code from before
-  };
-  
-  // Registers a device for push notifications and stores its token
-  $scope.pushRegister = function() {
-    console.log('Ionic Push: Registering user');
-
-    // Register with the Ionic Push service.  All parameters are optional.
-    $ionicPush.register({
-      canShowAlert: true, //Can pushes show an alert on your screen?
-      canSetBadge: true, //Can pushes update app icon badges?
-      canPlaySound: true, //Can notifications play a sound?
-      canRunActionsOnWake: true, //Can run actions outside the app,
-      onNotification: function(notification) {
-        // Handle new push notifications here
-        // console.log(notification);
-        return true;
-      }
-    });
-  };
-})
-
-.controller('ChatsCtrl', function($scope, Chats) {
   // With the new view caching in Ionic, Controllers are only called
   // when they are recreated or on app start, instead of every page change.
   // To listen for when this page is active (for example, to refresh data),
   // listen for the $ionicView.enter event:
-  //
   //$scope.$on('$ionicView.enter', function(e) {
   //});
 
-  $scope.chats = Chats.all();
-  $scope.remove = function(chat) {
-    Chats.remove(chat);
+  // Form data for the login modal
+  $scope.loginData = {};
+
+  // Create the login modal that we will use later
+  $ionicModal.fromTemplateUrl('templates/login.html', {
+    scope: $scope
+  }).then(function(modal) {
+    $scope.modal = modal;
+  });
+
+  // Triggered in the login modal to close it
+  $scope.closeLogin = function() {
+    $scope.modal.hide();
+  };
+
+  // Open the login modal
+  $scope.login = function() {
+    $scope.modal.show();
+  };
+
+  // Perform the login action when the user submits the login form
+  $scope.doLogin = function() {
+    console.log('Doing login', $scope.loginData);
+
+    // Simulate a login delay. Remove this and replace with your login
+    // code if using a login system
+    $timeout(function() {
+      $scope.closeLogin();
+    }, 1000);
   };
 })
 
-.controller('ChatDetailCtrl', function($scope, $stateParams, Chats) {
-  $scope.chat = Chats.get($stateParams.chatId);
+.controller('PlaylistsCtrl', function($scope) {
+  $scope.playlists = [
+    { title: 'Reggae', id: 1 },
+    { title: 'Chill', id: 2 },
+    { title: 'Dubstep', id: 3 },
+    { title: 'Indie', id: 4 },
+    { title: 'Rap', id: 5 },
+    { title: 'Cowbell', id: 6 }
+  ];
 })
 
-.controller('AccountCtrl', function($scope) {
-  $scope.settings = {
-    enableFriends: true
+app.controller('MainCtrl', function($scope, $ionicModal) {
+  $scope.contact = {
+    name: 'Mittens Cat',
+    info: 'Tap anywhere on the card to open the modal'
+  }
+
+  $ionicModal.fromTemplateUrl('rewards.html', {
+    scope: $scope,
+    animation: 'slide-in-up'
+  }).then(function(modal) {
+    $scope.modal = modal
+  })  
+
+  $scope.openModal = function() {
+    $scope.modal.show()
+  }
+
+  $scope.closeModal = function() {
+    $scope.modal.hide();
   };
+
+  $scope.$on('$destroy', function() {
+    $scope.modal.remove();
+  });
+})
+
+.controller('PlaylistCtrl', function($scope, $stateParams) {
 });
