@@ -1,0 +1,80 @@
+.scroll-content {
+	background-image: url("../img/bg1.png");
+	background-size: cover;
+	background-position: center center;
+	background-repeat: no-repeat;
+}
+
+.profile-picture {
+	margin-top: 3em;
+	width: 100%;
+}
+
+.name {
+	color: white;
+	font-weight: bold;
+	font-size: 30px;
+	text-align: center;
+	margin-top: 0.25em;
+}
+
+.welcome {
+	font-style: italic;
+	color: white;
+	text-align: center;
+	margin-top: 1em;
+	font-size: 25px;
+}
+
+.merchant-name {
+	color: white;
+	font-weight: bold;
+	text-align: center;
+	font-size: 50px;
+	margin-top: 0.5em;
+}
+
+.unique-reward {
+	font-style: italic;
+	color: white;
+	text-align: center;
+	margin-top: 2em;
+	font-size: 20px;
+}
+
+.reward-name {
+	color: white;
+	font-weight: bold;
+	text-align: center;
+	font-size: 50px;
+	margin-top: 0.5em;
+}
+
+.fine-print {
+	color: white;
+	font-weight: bold;
+	text-align: center;
+	margin-top: 0.75em;
+	font-size: 15px;
+}
+
+.leaderboard {
+	position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 340px;
+    width: 100%;
+	background-image: url("../img/bg-leaderboard.png");
+}
+
+.scroll {
+	min-height: 100%;
+}
+
+.leaderboard-title {
+	color: white;
+	font-weight: bold;
+	text-align: center;
+	font-size: 30px;
+	margin-top: 1em;
+}
