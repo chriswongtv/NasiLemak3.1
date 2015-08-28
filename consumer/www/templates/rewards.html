@@ -1,7 +1,8 @@
 <ion-view view-title="Rewards for Nasi Lemak 3.1">
   <ion-content>
-	<div class="list card">
 
+	<div class="list card">
+		<canvas style="height:0px; position:absolute; z-index:9999; margin-top:100px"></canvas>
 		<div class="item item-avatar">
 			<img src="img/n.png">
 			<h2>Nasi Lemak</h2>
@@ -12,7 +13,7 @@
 			<img src="img/nasilemak.jpg">
 		</div>
 
-		<a class="item item-icon-left assertive" href="#">
+		<a class="item item-icon-left assertive" ng-click="showConfirm()">
 			<i class="icon ion-bag"></i>
 			Redeem
 		</a>
@@ -20,7 +21,7 @@
 	</div>
 
 	<div class="list card">
-
+		<canvas style="height:0px; position:absolute; z-index:9999; margin-top:100px"></canvas>
 		<div class="item item-avatar">
 			<img src="img/n.png">
 			<h2>Nasi Goreng</h2>
@@ -31,7 +32,7 @@
 			<img src="img/nasigoreng.jpg">
 		</div>
 
-		<a class="item item-icon-left assertive" href="#">
+		<a class="item item-icon-left assertive" ng-click="showConfirm()">
 			<i class="icon ion-bag"></i>
 			Redeem
 		</a>
@@ -39,7 +40,7 @@
 	</div>
 
 	<div class="list card">
-
+		<canvas style="height:0px; position:absolute; z-index:9999; margin-top:100px"></canvas>
 		<div class="item item-avatar">
 			<img src="img/n.png">
 			<h2>Nasi Ayam</h2>
@@ -50,29 +51,10 @@
 			<img src="img/nasiayam.jpg">
 		</div>
 
-		<div class="item item-icon-left assertive">
+		<a class="item item-icon-left assertive" ng-click="showConfirm()">
 			<i class="icon ion-bag"></i>
 			Redeem
-		</div>
+		</a>
 	</div>
   </ion-content>
 </ion-view>
-
-<script>
-angular.module('ionic.example', ['ionic'])
-.controller('PopupCtrl', function($scope, $timeout, $q, $ionicPopup) {
-	$scope.showConfirm = function() {
-	   var confirmPopup = $ionicPopup.confirm({
-	     title: 'Consume Ice Cream',
-	     template: 'Are you sure you want to eat this ice cream?'
-	   });
-	   confirmPopup.then(function(res) {
-	     if(res) {
-	       console.log('You are sure');
-	     } else {
-	       console.log('You are not sure');
-	     }
-	   });
-	 };
-});
- </script>

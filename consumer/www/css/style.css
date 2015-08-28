@@ -19,46 +19,48 @@
 }
 
 .welcome {
-	font-style: italic;
+	font-family: 'Damion', cursive;
 	color: white;
 	text-align: center;
-	margin-top: 0.5em;
-	font-size: 25px;
+	margin-top: 0.65em;
+	font-size: 30px;
 }
 
 .merchant-name {
+	font-family: 'Sigmar One', cursive;
 	color: white;
-	font-weight: bold;
 	text-align: center;
-	font-size: 50px;
+	font-size: 45px;
 	margin-top: 0.5em;
 }
 
 .unique-reward {
-	font-style: italic;
+	font-family: 'Damion', cursive;
 	color: white;
 	text-align: center;
-	margin-top: 2em;
-	font-size: 20px;
+	margin-top: 1em;
+	font-size: 30px;
 }
 
 .reward-name {
+	font-family: 'Alegreya Sans SC', sans-serif;
 	color: white;
-	font-weight: bold;
 	text-align: center;
 	font-size: 50px;
 	margin-top: 0.5em;
 }
 
 .fine-print {
+	font-family: 'Lato', sans-serif;
 	color: white;
-	font-weight: bold;
 	text-align: center;
-	margin-top: 0.75em;
+	margin-top: 1em;
 	font-size: 15px;
 }
 
 .leaderboard {
+	font-family: Helvetica Neue;
+	font-weight: 200;
 	position: absolute;
     left: 0;
     bottom: 0;

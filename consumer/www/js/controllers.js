@@ -1,6 +1,6 @@
 angular.module('starter.controllers', [])
 
-.controller('AppCtrl', function($scope, $ionicModal, $timeout) {
+.controller('AppCtrl', function($scope, $ionicModal, $ionicPopup, $timeout) {
 
   // With the new view caching in Ionic, Controllers are only called
   // when they are recreated or on app start, instead of every page change.
@@ -28,6 +28,60 @@ angular.module('starter.controllers', [])
   $scope.login = function() {
     $scope.modal.show();
   };
+
+  $scope.showConfirm = function() {
+   var confirmPopup = $ionicPopup.confirm({
+     title: 'Confirm',
+     template: 'Are you sure you want to redeem this reward?'
+   });
+   confirmPopup.then(function(res) {
+     if(res) {
+      document.getElementsByTagName('canvas')[0].style.height="200px";
+      /*document.getElementsByTagName('canvas')[0].style.position="absolute";
+      document.getElementsByTagName('canvas')[0].style.z-index="9999";
+      document.getElementsByTagName('canvas')[0].style.margin-top="100px";*/
+      var start = 100;
+var mid = 145;
+var end = 250;
+var width = 22;
+var leftX = start;
+var leftY = start;
+var rightX = mid + 2;
+var rightY = mid - 3;
+var animationSpeed = 5;
+
+var ctx = document.getElementsByTagName('canvas')[0].getContext('2d');
+ctx.lineWidth = width;
+ctx.strokeStyle = 'rgba(39, 174, 96, 1)';
+
+for (i = start; i < mid; i++) {
+    var drawLeft = window.setTimeout(function () {
+        ctx.beginPath();
+        ctx.moveTo(start, start);
+        ctx.lineTo(leftX, leftY);
+        ctx.lineCap = 'round';
+        ctx.stroke();
+        leftX++;
+        leftY++;
+    }, 1 + (i * animationSpeed) / 3);
+}
+
+for (i = mid; i < end; i++) {
+    var drawRight = window.setTimeout(function () {
+        ctx.beginPath();
+        ctx.moveTo(leftX + 2, leftY - 3);
+        ctx.lineTo(rightX, rightY);
+        ctx.stroke();
+        rightX++;
+        rightY--;
+    }, 1 + (i * animationSpeed) / 3);
+}
+       console.log('You are sure');
+     } else {
+       console.log('You are not sure');
+     }
+   });
+ };
 
   // Perform the login action when the user submits the login form
   $scope.doLogin = function() {
