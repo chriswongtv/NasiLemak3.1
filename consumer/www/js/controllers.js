@@ -108,7 +108,7 @@ for (i = mid; i < end; i++) {
   }, false);
 
   // watch Acceleration
-  var options = { frequency: 1000 };
+  var options = { frequency: 2000 };
   document.addEventListener("deviceready", function () {
     var watch = $cordovaDeviceMotion.watchAcceleration(options);
     watch.then(
@@ -121,22 +121,18 @@ for (i = mid; i < end; i++) {
         var Y = result.y;
         var Z = result.z;
         var timeStamp = result.timestamp;
-        var element = document.getElementById('accelerometer');
-        element.innerHTML = 'Acceleration X: ' + acceleration.x + '<br />' +
-                            'Acceleration Y: ' + acceleration.y + '<br />' +
-                            'Acceleration Z: ' + acceleration.z + '<br />' +
-                            'Timestamp: '      + acceleration.timestamp + '<br />';
+        // console.log(result);
     });
 
 
-    watch.clearWatch();
+    // watch.clearWatch();
     // OR
-    $cordovaDeviceMotion.clearWatch(watch)
-      .then(function(result) {
-        // success
-        }, function (error) {
-        // error
-      });
+    // $cordovaDeviceMotion.clearWatch(watch)
+    //   .then(function(result) {
+    //     // success
+    //     }, function (error) {
+    //     // error
+    //   });
 
   }, false);
 })
